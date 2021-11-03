@@ -44,4 +44,24 @@ generateParenthesis = (n) => {
   help('', 0, 0)
   return res
 }
+// 2021.11.3
+generateParenthesis = (n) => {
+  const res = []
+  const help = (s, left, right) => {
+    // 递归先考虑终止条件
+    if (s.length === 2 * n) return res.push(s)
+
+    if (left < n) {
+      help(s + '(', left + 1, right)
+    }
+    if (left > right) {
+      help(s + ')', left, right + 1)
+    }
+  }
+
+  help('', 0, 0)
+  return res
+}
+
 console.log(generateParenthesis(3))
+

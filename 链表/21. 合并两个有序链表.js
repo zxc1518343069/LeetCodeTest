@@ -32,3 +32,26 @@ let mergeTwoLists = function(l1, l2) {
 
   return newNode.next
 };
+
+
+// 2021.11.3 第二次重温
+
+mergeTwoLists = (l1, l2) => {
+  // 特殊判断
+  if (!l1 || !l2) return l1 ? l1 : l2
+  const newHead = new ListNode()
+  let p = newHead
+
+  while (l1 && l2) {
+    if (l1.val > l2.val) {
+      p.next = l2 // 连接的是节点  不是值 踩坑了
+      l2 = l2.next
+    } else {
+      p.next = l1
+      l1 = l1.next
+    }
+    p = p.next
+  }
+  p.next = l1 ? l1 : l2
+  return newHead.next
+}
