@@ -58,3 +58,23 @@ swapPairs = (head) => {
 
   return newHead.next
 }
+
+// 2021 11 4 重温链表
+
+swapPairs = (head) => {
+  if (!head || !head.next) return head
+  const newHead = new ListNode()
+  newHead.next = head
+  let p = newHead
+  while (p.next && p.next.next) {
+    const first = p.next // 第一个节点
+    const next = first.next
+
+    p.next = next
+    first.next = next.next
+    next.next = first
+    p = first
+  }
+
+  return newHead.next
+}

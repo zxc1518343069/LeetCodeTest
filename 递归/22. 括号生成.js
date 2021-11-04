@@ -21,7 +21,7 @@ let generateParenthesis = function(n) {
     }
   };
   help('', 0, 0);
-  return res;
+  return res;2
 };
 
 
