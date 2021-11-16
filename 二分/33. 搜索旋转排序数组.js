@@ -51,11 +51,11 @@ search = (nums, target) => {
       // 判断目标值不在左侧 在右侧
       left = mid + 1
     } else if (nums[0] < nums[mid] && (target > nums[mid] || target < nums[0])) {
-      // nums[0] < nums[mid] 判断 左边是递增
+      // nums[0] < nums[mid] 判断 左边是递增  判断目标值是不是在左侧递增区间
       // 我们已经知道了左边是递增的。然后  target > nums[mid] || target < nums[0] 是判断target 一定是在右边
       left = mid + 1
     } else {
-      // 一定在左边
+      // 一定在右边
       right = mid
     }
   }

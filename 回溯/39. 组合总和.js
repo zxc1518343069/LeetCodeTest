@@ -33,4 +33,33 @@ let combinationSum = function(candidates, target) {
   return ans
 };
 
+
+// 2021 11.06
+combinationSum = (candidates, target) => {
+
+  let res = [],
+      tmp = [], // 用于存放数据
+      len = candidates.length
+  const dfs = (sum) => {
+    // 结束条件
+    if (sum === target)
+      return res.push([...tmp])
+    if (sum > target)
+      return
+
+    for (let i = 0; i < len; i++) {
+      if (tmp.length === 0 || candidates[i] >= tmp[tmp.length - 1]) { // 去重 保证一个数不会被取多次
+        tmp.push(candidates[i])
+        sum += candidates[i]
+        dfs(sum)
+        sum -= tmp.pop()
+      }
+    }
+
+
+  }
+
+  dfs(0)
+  return res
+}
 console.log(combinationSum([2, 3, 6, 7], 7))

@@ -1,15 +1,5 @@
 // 思路。   回溯算法
 
-/*
-* 1.  返回的是一个数组，需要用 一个数组存储答案，一个数组 存放测试数据
-* 2.  遍历这个 candidates  把它放到测试数组里，让sum+这个值
-* 3.  再次进行dfs  原因。需要遍历所有情况
-* 4.  最后 如果不满足  sum -= tmp.pop()   从新开始下一种情况
-* 5.  需要考虑重复数据。因为给的事无重复元素。所以下一个元素一定比上一个元素大，
-* 6.  存在一个特例，即7本身。 所以  要考虑 tmp为0的情况
-* */
-
-
 /**
  * @param {number[]} candidates
  * @param {number} target
@@ -42,4 +32,36 @@ let combinationSum2 = function(candidates, target) {
   return ans
 };
 
-console.log(combinationSum2([2, 5, 2, 1, 2].sort(), 5))  //[ [ 1, 2, 2 ], [ 5 ] ]
+// 2021 11 06
+// 题目信息 找到所有组合  dfs
+// 对比39 题 改动点在于 if 判断条件的不同 和多了一的deep参数 用来判断
+// deep的作用  判断走到了数组的第几个
+combinationSum2 = (candidates, target) => {
+  candidates.sort((a,b)=>a-b)
+  let res = [],
+      tmp = [], // 用于存放数据
+      len = candidates.length
+  const dfs = (sum, deep) => {
+    // 结束条件
+    if (sum === target)
+      return res.push([...tmp])
+    if (sum > target)
+      return
+
+    for (let i = deep; i < len; i++) {
+      if (candidates[i] > target) return
+      if (i > deep && candidates[i] === candidates[i - 1]) {
+        // i >deep 保证能被添加一次
+        // candidates[i] === candidates[i - 1] 去重作用
+        continue
+      }
+      tmp.push(candidates[i])
+      dfs(sum + candidates[i], i + 1)
+      tmp.pop()
+    }
+  }
+  dfs(0, 0)
+  return res
+}
+
+console.log(combinationSum2([2, 5, 2, 1, 2], 5))  //[ [ 1, 2, 2 ], [ 5 ] ]
