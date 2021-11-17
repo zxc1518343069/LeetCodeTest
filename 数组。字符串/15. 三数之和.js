@@ -54,7 +54,7 @@ let threeSum2 = function(nums) {
 }
 // [ -4, -1, -1, 0, 1, 2 ]
 
-console.log(threeSum2([-1, 0, 1, 2, -1, -4]))
+// console.log(threeSum2([-1, 0, 1, 2, -1, -4]))
 
 
 let test3 = (nums) => {
@@ -82,7 +82,52 @@ let test3 = (nums) => {
 
 
 }
-console.log(test3([-1, 0, 1, 2, -1, -4]))
+// console.log(test3([-1, 0, 1, 2, -1, -4]))
 
 /* 双指针 */
-
+// 题目要求返回的是元素本身 所以 可以排序
+test3 = (nums) => {
+  const len = nums.length
+  const res = []
+  if (len < 3) return []
+  nums.sort((a, b) => a-b)
+  if (nums[0] > 0) return []
+  for (let i = 0; i < len; i++) {
+    if (i && nums[i] === nums[i - 1]) continue // 去重处理
+    let target = nums[i]
+    let right = len - 1, left = i + 1
+    while (left < right) {
+      if (nums[left] + nums[right] + target === 0) {
+        res.push([nums[left], nums[right], target])
+        // 去重
+        while (nums[left] === nums[left + 1]) {
+          left++
+        }
+        while (nums[right] === nums[right - 1]) {
+          right--
+        }
+        left++
+        right--
+      } else if (nums[left] + nums[right] + target > 0) {
+        right--
+      } else {
+        left++
+      }
+    }
+  }
+  return res
+}
+// console.log(test3([-1, 0, 1, 2, -1, -4]))
+// console.log(test3([0, 0, 0]))
+console.log(test3([-1,0,1,2,-1,-4,-2,-3,3,0,4]))
+// [
+// [-4,0,4]    [ 0, 4, -4 ],
+// [-4,1,3]   [ 1, 3, -4 ]
+// [-3,-1,4]
+// [-3,0,3]   [ 0, 3, -3 ],
+// [-3,1,2]   [ 1, 2, -3 ],
+// [-2,-1,3]
+// [-2,0,2]   [ 0, 2, -2 ],
+// [-1,-1,2]  [ -1, 2, -1 ],
+// [-1,0,1]  [ 0, 1, -1 ],
+// ]
