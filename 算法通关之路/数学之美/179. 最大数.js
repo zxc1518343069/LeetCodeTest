@@ -1,9 +1,10 @@
+// https://leetcode-cn.com/problems/largest-number/
 /**
  * @param {number[]} nums
  * @return {string}
  */
 var largestNumber = function(nums) {
-  nums.sort((a, b) => {
+  nums.sort((a, b) => { // 自定义排序规则   '9' > '30'
     if ('' + a + b > '' + b + a) {
       return -1
     } else if ('' + a + b < '' + b + a) {
