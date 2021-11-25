@@ -1,10 +1,11 @@
+// https://leetcode-cn.com/problems/super-palindromes/
 /**
  * @param {string} left
  * @param {string} right
  * @return {number}
  */
 
-// 暴力
+// 暴力  问题的核心 在于 构造一个回文数
 var superpalindromesInRange = function(left, right) {
   let res = 0
   const Palindrome = (s) => {
