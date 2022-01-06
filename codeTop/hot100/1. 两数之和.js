@@ -1,5 +1,6 @@
 // https://leetcode-cn.com/problems/two-sum/
 
+// 如果可以 考虑下变种
 
 /* 暴力 */
 let twoSum = function(nums, target) {
