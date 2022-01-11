@@ -37,12 +37,12 @@ let threeSum2 = function(nums) {
     let target = 0 - nums[i]
     let map = new Map()
     for (let j = i + 1; j < nums.length; j++) {
-      if (res.length) { // 去重处理
-        let top = res[res.length - 1]
-        if (top[1] === target - nums[j] && top[2] === nums[j]) {
-          continue
-        }
-      }
+      // if (res.length) { // 去重处理
+      //   let top = res[res.length - 1]
+      //   if (top[1] === target - nums[j] && top[2] === nums[j]) {
+      //     continue
+      //   }
+      // }
       if (map.has(nums[j])) {
         res.push([nums[i], map.get(nums[j]), nums[j]])
       }
@@ -54,6 +54,7 @@ let threeSum2 = function(nums) {
 }
 // [ -4, -1, -1, 0, 1, 2 ]
 
+// console.log(threeSum2([-1, 0, 1, 2, -1, -4]))
 // console.log(threeSum2([-1, 0, 1, 2, -1, -4]))
 
 
