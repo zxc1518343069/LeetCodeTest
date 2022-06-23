@@ -22,6 +22,7 @@ const findNumberIn2DArray = function(matrix, target) {
   }
   return false
 };
+// 还有一种方法 对每一行做一次二分。 或者可以把二分和这个方法1结合
 
 console.log(findNumberIn2DArray([
   [1, 4, 7, 11, 15],
