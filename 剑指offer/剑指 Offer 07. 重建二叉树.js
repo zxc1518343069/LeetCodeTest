@@ -47,3 +47,20 @@ function a(preorder, inorder) {
   }
   return build ()
 }
+
+// 2021-07-11 重刷联系手感
+var buildTree3 = function(preorder, inorder) {
+  // 中序遍历第一个是 根节点 根据根节点在前序遍历的位置建立树
+  let p = 0, i = 0 // p 记录 先序遍历的位置  i 记录中序遍历的位置
+  let build = (stop) => {
+    if (inorder[i] !== stop) {
+      let root = new TreeNode(preorder[p++])
+      root.left = build(root.val)// 左节点都在根节点之前 这个时候左树已经建立完成
+      i++
+      root.right = build(stop)
+      return root
+    }
+    return null
+  }
+  return build()
+};
