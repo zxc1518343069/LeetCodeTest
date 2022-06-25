@@ -12,5 +12,27 @@ var printNumbers = function(n) {
   }
   return res
 };
+// 考虑大数的条件下 做法
+var printNumbers2 = function(n) {
+  let res = []
 
-console.log(printNumbers(2))
+  const dfs = (s, sLen) => {
+    if (s.length === sLen) return res.push(s * 1)
+
+    for (let i = 0; i <= 9; i++) {
+      s += i
+      dfs(s, sLen)
+      s = s.substring(0, s.length - 1)
+    }
+  }
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= 9; j++) {
+      dfs(j.toString(), i)
+    }
+  }
+  return res
+};
+
+
+console.log(printNumbers2(2))

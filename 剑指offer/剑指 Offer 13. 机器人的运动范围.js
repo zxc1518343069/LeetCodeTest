@@ -17,7 +17,6 @@ var movingCount = function(m, n, k) {
     distance.add(`${ x },${ y }`) // 记录当前的 行进路程
     for (let [dx, dy] of direction) {
       let newx = x + dx, newy = y + dy // 走四个方向
-
       // 确保在方格内 且 不走走过的路径
       if (newx >= 0 && newy >= 0 && newx < m && newy < n && !distance.has(`${ newx },${ newy }`)) {
         dfs(newx, newy)

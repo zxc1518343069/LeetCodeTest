@@ -26,9 +26,9 @@ var integerBreak2 = function(n) {
   const dp = new Array(n + 1).fill(0)
   dp[2] = 1
   dp[3] = 2
-  // dp[4] = 4
+  // dp[4] = 4  2²
   // dp[5] = 6  2 * 3
-  // dp[6] = 9  3 * 3
+  // dp[6] = 9  3 * 3   3²
   // dp[7] = 12  2 * 2 * 3    2² * 3    3 * dp[4]
   // dp[8] = 18  2 * 3 * 3    2 * 3²    2 * dp[6]
   for (let i = 3; i <= n; i++) {
