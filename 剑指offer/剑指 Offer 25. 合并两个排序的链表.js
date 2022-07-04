@@ -12,6 +12,7 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+// 2022-7-4 菜了菜了 链表都块不会做了
 var mergeTwoLists = function(l1, l2) {
   if(!l1 || !l2){
     return l1?l1:l2
