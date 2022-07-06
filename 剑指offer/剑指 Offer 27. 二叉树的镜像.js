@@ -15,9 +15,21 @@ var mirrorTree = function(root) {
     return null
 
   const left = mirrorTree(root.left)
-  const right= mirrorTree(root.right)
+  const right = mirrorTree(root.right)
 
   root.left = right
   root.right = left
   return root
 };
+
+// 2022-7-6
+mirrorTree = function(root) {
+  if (root === null) return null
+
+  const right = mirrorTree(root.right)
+  const left = mirrorTree(root.left)
+  root.left = right
+  root.right = left
+
+  return root
+}

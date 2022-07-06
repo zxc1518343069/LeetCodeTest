@@ -23,3 +23,24 @@ var validateStackSequences = function(pushed, popped) {
 
   return !stack.length
 };
+
+// 2022 -7 -6
+validateStackSequences = function(pushed, popped) {
+
+  const stack = [], len = pushed.length
+  let index = 0
+
+  for (let i = 0; i < len; i++) {
+    stack.push(pushed[i])
+    while (stack.length && stack[stack.length - 1] === popped[index]) {
+      stack.pop()
+      index++
+    }
+  }
+
+  return !stack.length
+}
+
+
+console.log(validateStackSequences(pushed = [1, 2, 3, 4, 5], popped = [4, 3, 5, 1, 2]))
+console.log(validateStackSequences(pushed = [1, 2, 3, 4, 5], popped = [4, 5, 3, 2, 1]))

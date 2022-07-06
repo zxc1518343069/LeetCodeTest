@@ -22,8 +22,8 @@ var pathSum = function(root, target) {
     sum += node.val
     // 结束条件
     if (!node.left && !node.right && sum === target)
-      return res.push([...tmp])
-    else { // 循环条件
+      res.push([...tmp])
+    else {
       dfs(node.left, sum)
       dfs(node.right, sum)
     }

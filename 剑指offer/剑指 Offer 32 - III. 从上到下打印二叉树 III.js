@@ -1,7 +1,4 @@
-// https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/
-/*
- bfs 另一种
- */
+// https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -21,13 +18,15 @@ var levelOrder = function(root) {
   while(stack.length){
     let len = stack.length
     let tmp = []
-    while (len--){
-      const node = stack.shift()
-      tmp.push(node.val)
-      if(node.left) stack.push(node.left)
-      if(node.right) stack.push(node.right)
+    while(len--){
+      let n = stack.shift()
+      count % 2 === 0 && tmp.push(n.val) // 这里根据 奇数偶数改变顺序
+      count % 2 === 1 && tmp.unshift(n.val)
+      if(n.left) stack.push(n.left)
+      if(n.right) stack.push(n.right)
     }
     res.push(tmp)
+    count++
   }
   return res
 };

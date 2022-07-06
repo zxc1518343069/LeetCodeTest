@@ -31,7 +31,7 @@ let verifyPostorder = function(postorder) {
   }
 };
 
-console.log(verifyPostorder([1,2,5,10,6,9,4,3]))
+console.log(verifyPostorder([1, 2, 5, 10, 6, 9, 4, 3]))
 let verifyPostorder2 = function(nums) {
   if (nums.length <= 1) return true
 
@@ -41,7 +41,7 @@ let verifyPostorder2 = function(nums) {
   let i = 0
 
   // 找出第一个大于root 的节点 就是 右子树第一个节点
-  for (; i < nums.length-1; i++)
+  for (; i < nums.length - 1; i++)
     if (nums[i] > root)
       break
 
@@ -57,3 +57,39 @@ let verifyPostorder2 = function(nums) {
     return false
   }
 }
+
+
+// 二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）
+// 它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+// 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+// 它的左、右子树也分别为二叉排序树
+// 2022-7-6
+//如果先收集中间节点，再左节点，再右节点，就是前序遍历；
+//如果先收集处理左节点，再中间节点，再右节点，就是中序遍历；
+// 如果先处理左节点，然后右节点，最后中间节点，就是后序遍历
+verifyPostorder = function(postorder) {
+  if (postorder.length <= 1) return true
+
+  let len = postorder.length
+  const rootNode = postorder[len - 1] // 后续便利 获取最后一个阶级点为 根节点
+  let i = 0;
+
+  //根据二叉搜索树的性质。找到第一个比 根节点大的数
+  for (; i < len - 1; i++) {
+    if (postorder[i] > rootNode) break
+  }
+
+  // 获取到 左右树  接下来判断   左树是否都比rootNode小，右树是否都比rootNode大
+  const leftTree = postorder.slice(0, i)
+  const rightTree = postorder.slice(i, len - 1)
+  const res = leftTree.every((item) => item < rootNode) && rightTree.every((item) => item >= rootNode);
+
+  //根据结果  如果满足，则继续 递归。 判断子树是不是都是二叉搜索树
+  if (res){
+    return verifyPostorder(leftTree) && verifyPostorder(rightTree);
+
+  }else{
+    return false
+  }
+
+};
