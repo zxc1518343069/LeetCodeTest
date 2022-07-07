@@ -1,4 +1,4 @@
-//* https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
+// https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
 
 /**
  * @param {number[]} arr
@@ -11,7 +11,7 @@ const getLeastNumbers = function (arr, k) {
   return arr.sort((a, b) => a - b).slice(0, k);
 };
 
-// 堆
+//todo:  这个后续要补充下
 const getLeastNumbers2 = function (arr, k) {
   return arr.sort((a, b) => a - b).slice(0, k);
 };
