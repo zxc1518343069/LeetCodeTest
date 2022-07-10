@@ -12,20 +12,22 @@
  */
 /*
 只考虑当前节点 与下一层的关系
-
+平衡二叉树的定义是：二叉树的每个节点的左右子树的高度差的绝对值不超过 1
  */
-var isBalanced = function(root) {
-
-  let returnType = (isb, height) => ({ isb, height })
+// todo: 感觉没理解好。回来自己再做一次
+var isBalanced = function (root) {
+  let returnType = (isb, height) => ({ isb, height });
 
   const process = (node) => {
-    if (node === null) return returnType(true, 0)
+    if (node === null) return returnType(true, 0);
     let left = process(node.left),
-        right = process(node.right),
-        height = Math.max(left.height, right.height) + 1,
-        isb = left.isb && right.isb && Math.abs(left.height - right.height) < 2
-    return returnType(isb, height)
-  }
-  process(root)
-  return process(root).isb
+      right = process(node.right),
+      height = Math.max(left.height, right.height) + 1,
+      isb = left.isb && right.isb && Math.abs(left.height - right.height) < 2;
+    return returnType(isb, height);
+  };
+  process(root);
+  return process(root).isb;
 };
+
+//

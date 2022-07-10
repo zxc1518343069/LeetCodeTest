@@ -14,15 +14,16 @@
 /*
 二叉搜索树的中序遍历是由小到大的有序数列  只需要  反中序遍历即可
  */
-var kthLargest = function(root, k) {
-  const arr = []
+// 中序遍历拿到值就可
+var kthLargest = function (root, k) {
+  const arr = [];
   const unInOrder = (node) => {
     if (node) {
-      unInOrder(node.right)
-      arr.push(node.val)
-      unInOrder(node.left)
+      unInOrder(node.right);
+      arr.push(node.val);
+      unInOrder(node.left);
     }
-  }
-  unInOrder(root)
-  return arr[k - 1]
+  };
+  unInOrder(root);
+  return arr[k - 1];
 };
