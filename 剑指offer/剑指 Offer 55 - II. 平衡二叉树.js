@@ -31,3 +31,22 @@ var isBalanced = function (root) {
 };
 
 //
+isBalanced = function (root) {
+  let returnType = (isb, height) => ({ isb, height });
+
+  const process = (node) => {
+    // 判断到叶子节点的时候
+    if (node === null) return returnType(true, 0);
+
+    // 递归 只需要考虑当前和下一层关系
+    const left = process(node.left);
+    const right = process(node.right);
+    const height = Math.max(left.height, right.height) + 1;
+    const isB =
+      left.isb && right.isb && Math.abs(left.height - right.height) < 2;
+
+    return returnType(isB, height);
+  };
+  process(root);
+  return process(root).isb;
+};
