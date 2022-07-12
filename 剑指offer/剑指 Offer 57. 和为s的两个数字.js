@@ -5,17 +5,18 @@
  * @return {number[]}
  */
 /*
- 重点  有序数组
+ 重点  有序数组  递增数组 一般都是二分
  */
-var twoSum = function(nums, target) {
-  let i = 0, j = nums.length - 1
+var twoSum = function (nums, target) {
+  let i = 0,
+    j = nums.length - 1;
   while (i < j) {
-    if (nums[i] + nums[j]> target) j--
-    else if (nums[i] + nums[j] < target) i++
-    else return [nums[i] , nums[j]]
+    if (nums[i] + nums[j] > target) j--;
+    else if (nums[i] + nums[j] < target) i++;
+    else return [nums[i], nums[j]];
   }
-  return []
+  return [];
 };
 
-console.log(twoSum(nums = [2,7,11,15], target = 9))
-console.log(twoSum(nums = [10,26,30,31,47,60], target = 40))
+console.log(twoSum((nums = [2, 7, 11, 15]), (target = 9)));
+console.log(twoSum((nums = [10, 26, 30, 31, 47, 60]), (target = 40)));
