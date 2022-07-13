@@ -12,17 +12,17 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-let lowestCommonAncestor = function(root, p, q) {
-  if(!root)
-    return null
-  if(root === p || root === q)
-    return root
-  let left = lowestCommonAncestor(root.left,p,q),
-      right = lowestCommonAncestor(root.right,p,q)
+let lowestCommonAncestor = function (root, p, q) {
+  if (!root) return null;
+  // 一个节点也可以是它自己的祖先
+  if (root === p || root === q) return root;
+  // 往下开始找左右节点
+  let left = lowestCommonAncestor(root.left, p, q),
+    right = lowestCommonAncestor(root.right, p, q);
 
-  if(left && right)
-    return root
-  if(left === null)
-    return right
-  return left
+  // 如果左右节点同时存在 就返回 自身
+  if (left && right) return root;
+  // 返回两者一个
+  if (left === null) return right;
+  return left;
 };

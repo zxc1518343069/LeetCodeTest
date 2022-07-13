@@ -12,7 +12,8 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function(root, p, q) {
+var lowestCommonAncestor = function (root, p, q) {
+  // 如果都在 p q 节点 就返回 左节点 否则就去右
   if (p.val < root.val && q.val < root.val) {
     return lowestCommonAncestor(root.left, p, q);
   }
