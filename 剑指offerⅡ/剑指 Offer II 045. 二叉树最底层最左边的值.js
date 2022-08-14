@@ -1,3 +1,4 @@
+// https://leetcode.cn/problems/LwUNpT/
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -10,9 +11,10 @@
  * @param {TreeNode} root
  * @return {number}
  */
-// dfs 简单
+// dfs 注意 if的判断条件 第一次走到if 的时候 应该是 左子树的 最后一层的叶子节点
 var findBottomLeftValue = function (root) {
-  let curHeight = 0;
+  let curHeight = 0,
+    curVal;
 
   const dfs = (root, height) => {
     if (!root) {
