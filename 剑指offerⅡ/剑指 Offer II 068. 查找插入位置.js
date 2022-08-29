@@ -1,0 +1,24 @@
+// https://leetcode.cn/problems/N6YdxV/
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+// 一眼题  二分
+// https://blog.csdn.net/yuanren201/article/details/105336591 有关 < 和 <=
+var searchInsert = function (nums, target) {
+  const n = nums.length;
+  let left = 0,
+    right = n - 1,
+    ans = n;
+  while (left <= right) {
+    let mid = ((right - left) >> 1) + left;
+    if (target <= nums[mid]) {
+      ans = mid;
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return ans;
+};
