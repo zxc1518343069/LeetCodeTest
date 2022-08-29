@@ -24,6 +24,13 @@ singleNonDuplicate = function (nums) {
   // mid 为奇数时 要更上一位比
   while (low < high) {
     const mid = Math.floor((high - low) / 2) + low;
+    // 做一个优化
+    if (
+      mid % 2 === 0 &&
+      (nums[mid] !== nums[mid - 1] || nums[mid] !== nums[mid + 1])
+    ) {
+      return nums[mid];
+    }
     if (nums[mid] === nums[mid ^ 1]) {
       low = mid + 1;
     } else {
