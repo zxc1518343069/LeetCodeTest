@@ -5,7 +5,6 @@
  * @return {number}
  */
 // 一眼题  二分
-// https://blog.csdn.net/yuanren201/article/details/105336591 有关 < 和 <=
 var searchInsert = function (nums, target) {
   const n = nums.length;
   let left = 0,
