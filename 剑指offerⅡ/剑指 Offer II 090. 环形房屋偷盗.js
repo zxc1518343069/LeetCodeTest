@@ -13,7 +13,8 @@ var rob = function (nums) {
   }
   return Math.max(robRange(nums, 0, length - 2), robRange(nums, 1, length - 1));
 };
-
+// 考虑到每间房屋的最高总金额只和该房屋的前两间房屋的最高总金额相关
+// 因此可以使用滚动数组，在每个时刻只需要存储前两间房屋的最高总金额
 const robRange = (nums, start, end) => {
   let first = nums[start],
     second = Math.max(nums[start], nums[start + 1]);

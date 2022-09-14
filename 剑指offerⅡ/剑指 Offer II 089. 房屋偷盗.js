@@ -8,6 +8,7 @@ var rob = function (nums) {
   if (nums.length === 1) return nums[0];
   let n = nums.length; // 总共有几家
   let tmp = new Array(n);
+  // tmp 代表 偷 index 家的 最大金额
   tmp[0] = nums[0];
   // 谁家高偷谁家
   tmp[1] = Math.max(nums[0], nums[1]);
