@@ -4,17 +4,22 @@
  * @return {number}
  */
 // 参考思路 https://leetcode.cn/problems/cyJERH/solution/by-adela2012-xfn2/
+// 1. 需要得到的字符串单调递增
+// 2. 所以 当我遇到0时
+//      - 我是把前面的1 都反转成 0
+//      - 我不反转
+// 3. 取最小 次数
 var minFlipsMonoIncr = function (s) {
-  let zeroCount = 0,
+  let self = 0, // 反转自身次数
     oneCount = 0;
   for (const char of s) {
     if (char === "0") {
-      zeroCount = Math.min(zeroCount + 1, oneCount);
+      self = Math.min(self + 1, oneCount);
     } else {
       oneCount++;
     }
   }
-  return zeroCount;
+  return self;
 };
 
 minFlipsMonoIncr("00110");
