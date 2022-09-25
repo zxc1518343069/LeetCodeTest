@@ -6,7 +6,8 @@
 var minCut = function (s) {
   const n = s.length;
   // 初始化 假设 所有 所以 i - j 位置上都会回文字符串
-  const g = new Array(n).fill(0).map(() => new Array(n).fill(true));
+  const g = new Array(n).fill(0)
+    .map(() => new Array(n).fill(true));
 
   // 为什么不能这么写，可以 但是需要在内部false 改变判断方式
   // 原因 g[i + 1][j - 1] 判断需要依赖以 i 大 j小的值
