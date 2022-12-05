@@ -4,8 +4,11 @@
  */
 // 冒泡排序。。。 哎
 function bubbleSort(nums) {
-  if (!nums || !nums.length || nums.length < 2) {
+  if (!nums || !nums.length) {
     return [];
+  }
+  if (nums.length < 2) {
+    return nums;
   }
   const len = nums.length;
 

@@ -2,8 +2,11 @@
 // 图示参考 https://www.hello-algo.com/chapter_sorting/insertion_sort/#_2
 function insertionSort(nums) {
   // 外循环：base = nums[1], nums[2], ..., nums[n-1]
-  if (!nums || !nums.length || nums.length < 2) {
+  if (!nums || !nums.length) {
     return [];
+  }
+  if (nums.length < 2) {
+    return nums;
   }
   const len = nums.length;
   for (let i = 1; i < len; i++) {

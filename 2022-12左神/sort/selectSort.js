@@ -4,8 +4,11 @@
  */
 // 选择排序
 function selectSort(nums) {
-  if (!nums || !nums.length || nums.length < 2) {
+  if (!nums || !nums.length) {
     return [];
+  }
+  if (nums.length < 2) {
+    return nums;
   }
   const len = nums.length;
   for (let i = 0; i < len; i++) {
