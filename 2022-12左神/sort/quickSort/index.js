@@ -24,7 +24,6 @@ const quickSort = (nums) => {
     [nums[targetIndex], nums[right]] = [nums[right], nums[targetIndex]];
     // 开始获取 下一次递归区间
     const [l, r] = partition(left, right);
-
     process(left, l - 1);
     process(r + 1, right);
   };
@@ -62,5 +61,5 @@ const quickSort = (nums) => {
   process(0, nums.length - 1);
   return nums;
 };
-console.log(quickSort([3, 5, 4, 2, 1, 7, 8, 6, 3]));
-// console.log(quickSort([1, 3, 5, 4, 3]));
+// console.log(quickSort([3, 5, 4, 2, 1, 7, 8, 6, 3]));
+console.log(quickSort([1, 3, 4, 2, 5]));
