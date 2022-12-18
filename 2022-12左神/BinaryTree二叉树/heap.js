@@ -1,5 +1,5 @@
-class Heap {
-    // 俗称 优先队列
+export class Heap {
+  // 俗称 优先队列
   heap = [];
   // symbol = '>'
   constructor() {
